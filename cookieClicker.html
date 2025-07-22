@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookie Clicker Tracker</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+      background-color: #fffdf4;
+      transition: background-color 0.4s ease;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #5d4037;
+    }
+
+    #cookieButton {
+      font-size: 2.2rem;
+      padding: 20px 40px;
+      border-radius: 12px;
+      border: none;
+      background-color: #fdd835;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    #cookieButton:hover {
+      transform: scale(1.05);
+    }
+
+    #counter {
+      font-weight: bold;
+      color: #3e2723;
+    }
+
+    #message {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: #4e342e;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🍪 Cookie Clicker Challenge 🍪</h1>
+  <p>Click the cookie and see what happens!</p>
+
+  <button id="cookieButton">🍪 Click Me!</button>
+
+  <p>Clicks: <span id="counter">0</span></p>
+  <p id="message">Let the clicking begin...</p>
+
+  <script>
+    const button = document.getElementById("cookieButton");
+    const counterDisplay = document.getElementById("counter");
+    const messageDisplay = document.getElementById("message");
+
+    let count = 0;
+
+    button.addEventListener("click", () => {
+      count++;
+      counterDisplay.textContent = count;
+
+      // Milestone reactions
+      if (count === 10) {
+        messageDisplay.textContent = "You're just getting warmed up 🔥";
+        document.body.style.backgroundColor = "#fffde7";
+      } else if (count === 25) {
+        messageDisplay.textContent = "Cookie master in progress 🍪👑";
+        document.body.style.backgroundColor = "#f1f8e9";
+      } else if (count === 50) {
+        messageDisplay.textContent = "This is serious dedication 😮";
+        document.body.style.backgroundColor = "#e8eaf6";
+      } else if (count === 100) {
+        messageDisplay.textContent = "100 cookies?! Time to open a bakery! 🏆";
+        document.body.style.backgroundColor = "#f3e5f5";
+      } else if (count > 100 && count % 50 === 0) {
+        const bonusMessages = [
+          "Still going? You must really like cookies 🍪",
+          "Your mouse must be tired 😅",
+          "This is legendary clicking 🎯",
+          "Cookie champion unlocked! 🥇"
+        ];
+        const randomMsg = bonusMessages[Math.floor(Math.random() * bonusMessages.length)];
+        messageDisplay.textContent = randomMsg;
+      }
+    });
+  </script>
+
+</body>
+</html>
